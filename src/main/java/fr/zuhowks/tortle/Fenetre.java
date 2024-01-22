@@ -1,5 +1,7 @@
 package fr.zuhowks.tortle;
 
+import fr.zuhowks.tortle.listener.TurtleMovementListener;
+
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
@@ -35,5 +37,8 @@ public class Fenetre extends JFrame {
         panel.add(bouton_droite);
 
         this.getContentPane().add(panel, BorderLayout.SOUTH);
+
+        bouton_droite.addActionListener(new TurtleMovementListener());
+
     }
 }
