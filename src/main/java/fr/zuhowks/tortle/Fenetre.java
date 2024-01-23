@@ -3,21 +3,26 @@ package fr.zuhowks.tortle;
 import fr.zuhowks.tortle.listener.TurtleMovementListener;
 
 import javax.swing.JFrame;
-import java.awt.BorderLayout;
+import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import java.awt.GridLayout;
 
 public class Fenetre extends JFrame {
 
-    public static final int HAUTEUR = 500;
-    public static final int LARGEUR = 500;
+    public final int width;
+    public final int height;
 
     private Tortue tortue;
 
     public Fenetre() {
+        Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.width = screenDim.width;
+        this.height = screenDim.height;
+
         this.tortue = new Tortue();
-        this.setSize(LARGEUR, HAUTEUR);
+        this.setSize(width, height);
+        this.setMaximumSize(screenDim);
+        this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         this.setLayout(new BorderLayout());
