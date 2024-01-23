@@ -29,7 +29,7 @@ public class Tortue {
     /**
      * Orientation de la tortue
      */
-    private int direction;
+    private double direction;
     /**
      * Constante définissant l'orientation <em>nord</em> pour les tortues.
      */
@@ -99,7 +99,7 @@ public class Tortue {
      *
      */
     public void avancer() {
-        switch (this.getDirection()) {
+        switch ((int) this.getDirection()) {
             case NORD:
                 this.setY(this.getY() - 10);
                 break;
@@ -126,9 +126,9 @@ public class Tortue {
      * @see Tortue#EST
      * @see Tortue#OUEST
      * @see Tortue#direction
-     * @see Tortue#setDirection(int)
+     * @see Tortue#setDirection(double)
      */
-    public int getDirection() {
+    public double getDirection() {
         return this.direction;
     }
 
@@ -176,8 +176,8 @@ public class Tortue {
      * @see Tortue#direction
      * @see Tortue#getDirection()
      */
-    private void setDirection(int newDir) {
-        int oldDir = this.direction;
+    public void setDirection(double newDir) {
+        double oldDir = this.direction;
         this.direction = newDir;
         // notification de la modification aux listeners
         this.pcs.firePropertyChange("direction", oldDir, newDir);
@@ -196,7 +196,7 @@ public class Tortue {
      * @see Tortue#x
      * @see Tortue#getX()
      */
-    private void setX(int newX) {
+    public void setX(int newX) {
         int oldX = this.x;
         this.x = newX;
         // notification de la modification aux listeners
@@ -216,7 +216,7 @@ public class Tortue {
      * @see Tortue#y
      * @see Tortue#getY()
      */
-    private void setY(int newY) {
+    public void setY(int newY) {
         int oldY = this.y;
         this.y = newY;
         // notification de la modification aux listeners
@@ -231,7 +231,7 @@ public class Tortue {
      *
      */
     public void tournerDroite() {
-        switch (this.getDirection()) {
+        switch ((int) this.getDirection()) {
             case NORD:
                 this.setDirection(Tortue.EST);
                 break;

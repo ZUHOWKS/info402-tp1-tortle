@@ -28,11 +28,12 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
-        int direction = tortue.getDirection();
+        double direction = tortue.getDirection();
         int x = tortue.getX();
         int y = tortue.getY();
 
-        g2D.rotate(0, (double) (x + this.tortue.getItBoxInX()) / 2, (double) (y + this.tortue.getItBoxInX()) / 2);
+        g2D.rotate(direction, (double) x + this.tortue.getItBoxInX() * 0.5,  y + this.tortue.getItBoxInX() * 0.5);
+
         leftArm(x, y, direction, g2D);
         rightArm(x, y, direction, g2D);
         leftLeg(x, y, direction, g2D);
@@ -40,10 +41,9 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
         tete(x, y, direction, g2D);
         carapace(x, y, direction, g2D);
 
-
     }
 
-    private void carapace(int x, int y, int direction, Graphics2D g) {
+    private void carapace(int x, int y, double direction, Graphics2D g) {
 
         // Forme de la carapace
         g.setColor(this.skin);
@@ -52,7 +52,7 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
         g.drawOval(x, y, this.carapaceWitdh, this.carapaceHeight);
     }
 
-    private void tete(int x, int y, int direction, Graphics2D g) {
+    private void tete(int x, int y, double direction, Graphics2D g) {
         int width = (int) (this.tortue.getItBoxInX() * 0.325);
         int height = (int) (this.tortue.getItBoxInY() * 0.3);
         int posX = x + this.carapaceHeight;
@@ -95,21 +95,21 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
         g.drawOval(posX, posY, width, height);
     }
 
-    private void leftArm(int x, int y, int direction, Graphics2D g) {
+    private void leftArm(int x, int y, double direction, Graphics2D g) {
         int width = (int) (this.tortue.getItBoxInX() * 0.225);
         int height = (int) (this.tortue.getItBoxInY() * 0.225);
         int posX = (int) (x + this.tortue.getItBoxInX() * 0.7);
         leftMember(y, g, width, height, posX);
     }
 
-    private void rightArm(int x, int y, int direction, Graphics2D g) {
+    private void rightArm(int x, int y, double direction, Graphics2D g) {
         int width = (int) (this.tortue.getItBoxInX() * 0.225);
         int height = (int) (this.tortue.getItBoxInY() * 0.225);
         int posX = (int) (x + this.tortue.getItBoxInX() * 0.7);
         rightMember(y, g, width, height, posX);
     }
 
-    private void leftLeg(int x, int y, int direction, Graphics2D g) {
+    private void leftLeg(int x, int y, double direction, Graphics2D g) {
         int width = (int) (this.tortue.getItBoxInX() * 0.2);
         int height = (int) (this.tortue.getItBoxInY() * 0.2);
         int posX = (int) (x + this.tortue.getItBoxInX() * 0.05);
@@ -117,7 +117,7 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
     }
 
 
-    private void rightLeg(int x, int y, int direction, Graphics2D g) {
+    private void rightLeg(int x, int y, double direction, Graphics2D g) {
         int width = (int) (this.tortue.getItBoxInX() * 0.2);
         int height = (int) (this.tortue.getItBoxInY() * 0.2);
         int posX = (int) (x + this.tortue.getItBoxInX() * 0.05);

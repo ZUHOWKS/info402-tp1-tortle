@@ -1,5 +1,6 @@
 package fr.zuhowks.tortle;
 
+import fr.zuhowks.tortle.listener.BernieFollowMouseListener;
 import fr.zuhowks.tortle.listener.AvancerListener;
 import fr.zuhowks.tortle.listener.TournerDroiteListener;
 import fr.zuhowks.tortle.listener.TournerGaucheListener;
@@ -44,12 +45,12 @@ public class Fenetre extends JFrame {
         panel.add(bouton_droite);
 
         this.getContentPane().add(panel, BorderLayout.SOUTH);
+
+        this.addMouseMotionListener(new BernieFollowMouseListener(this.tortue));
+
         bouton_avancer.addActionListener(new AvancerListener(tortue));
         bouton_droite.addActionListener(new TournerDroiteListener(tortue));
         bouton_gauche.addActionListener(new TournerGaucheListener(tortue));
-
-
-
 
     }
 }
