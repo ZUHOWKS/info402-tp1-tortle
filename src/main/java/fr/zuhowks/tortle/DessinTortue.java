@@ -15,8 +15,8 @@ public class DessinTortue extends JPanel {
 
     public DessinTortue(Tortue tortue) {
         this.tortue = tortue;
-        this.xBox = 150;
-        this.yBox = 125;
+        this.xBox = 200;
+        this.yBox = 175;
 
         this.carapaceWitdh = (int) (this.xBox * 0.9);
         this.carapaceHeight = (int) (this.yBox * 0.9);
