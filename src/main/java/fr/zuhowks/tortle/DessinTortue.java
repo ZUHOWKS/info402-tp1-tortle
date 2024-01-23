@@ -15,8 +15,8 @@ public class DessinTortue extends JPanel {
 
     public DessinTortue(Tortue tortue) {
         this.tortue = tortue;
-        this.xBox = 250;
-        this.yBox = 225;
+        this.xBox = 150;
+        this.yBox = 125;
 
         this.carapaceWitdh = (int) (this.xBox * 0.9);
         this.carapaceHeight = (int) (this.yBox * 0.9);
@@ -32,7 +32,7 @@ public class DessinTortue extends JPanel {
         int x = tortue.getX();
         int y = tortue.getY();
 
-        g2D.rotate(direction, (double) (x + xBox) / 2, (double) (y + xBox) / 2);
+        g2D.rotate(0, (double) (x + xBox) / 2, (double) (y + xBox) / 2);
         leftArm(x, y, direction, g2D);
         rightArm(x, y, direction, g2D);
         leftLeg(x, y, direction, g2D);
@@ -79,48 +79,49 @@ public class DessinTortue extends JPanel {
 
     }
 
-    private void leftArm(int x, int y, int direction, Graphics2D g) {
-        int width = (int) (this.xBox * 0.225);
-        int height = (int) (this.yBox * 0.225);
-        int posX = (int) (x + xBox * 0.7);
+    private void leftMember(int y, Graphics2D g, int width, int height, int posX) {
         int posY = (int) (y + (yBox - carapaceHeight * 0.7) * 0.5) - height;
         g.setColor(this.skin);
         g.fillOval(posX, posY, width, height);
         g.setColor(Color.BLACK);
         g.drawOval(posX, posY, width, height);
+    }
+
+    private void rightMember(int y, Graphics2D g, int width, int height, int posX) {
+        int posY = (int) (y + (yBox + carapaceHeight * 0.45) * 0.5);
+        g.setColor(this.skin);
+        g.fillOval(posX, posY, width, height);
+        g.setColor(Color.BLACK);
+        g.drawOval(posX, posY, width, height);
+    }
+
+    private void leftArm(int x, int y, int direction, Graphics2D g) {
+        int width = (int) (this.xBox * 0.225);
+        int height = (int) (this.yBox * 0.225);
+        int posX = (int) (x + xBox * 0.7);
+        leftMember(y, g, width, height, posX);
     }
 
     private void rightArm(int x, int y, int direction, Graphics2D g) {
         int width = (int) (this.xBox * 0.225);
         int height = (int) (this.yBox * 0.225);
         int posX = (int) (x + xBox * 0.7);
-        int posY = (int) (y + (yBox + carapaceHeight * 0.45) * 0.5);
-        g.setColor(this.skin);
-        g.fillOval(posX, posY, width, height);
-        g.setColor(Color.BLACK);
-        g.drawOval(posX, posY, width, height);
+        rightMember(y, g, width, height, posX);
     }
 
     private void leftLeg(int x, int y, int direction, Graphics2D g) {
         int width = (int) (this.xBox * 0.2);
         int height = (int) (this.yBox * 0.2);
         int posX = (int) (x + xBox * 0.05);
-        int posY = (int) (y + (yBox - carapaceHeight * 0.7) * 0.5) - height;
-        g.setColor(this.skin);
-        g.fillOval(posX, posY, width, height);
-        g.setColor(Color.BLACK);
-        g.drawOval(posX, posY, width, height);
+        leftMember(y, g, width, height, posX);
     }
+
 
     private void rightLeg(int x, int y, int direction, Graphics2D g) {
         int width = (int) (this.xBox * 0.2);
         int height = (int) (this.yBox * 0.2);
         int posX = (int) (x + xBox * 0.05);
-        int posY = (int) (y + (yBox + carapaceHeight * 0.45) * 0.5);
-        g.setColor(this.skin);
-        g.fillOval(posX, posY, width, height);
-        g.setColor(Color.BLACK);
-        g.drawOval(posX, posY, width, height);
+        rightMember(y, g, width, height, posX);
     }
 
 
