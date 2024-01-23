@@ -7,19 +7,15 @@ import javax.swing.JPanel;
 public class DessinTortue extends JPanel {
 
     private final Tortue tortue;
-    private final int xBox;
-    private final int yBox;
     private final int carapaceWitdh;
     private final int carapaceHeight;
     private final Color skin;
 
     public DessinTortue(Tortue tortue) {
         this.tortue = tortue;
-        this.xBox = 200;
-        this.yBox = 175;
 
-        this.carapaceWitdh = (int) (this.xBox * 0.9);
-        this.carapaceHeight = (int) (this.yBox * 0.9);
+        this.carapaceWitdh = (int) (this.tortue.getItBoxInX() * 0.9);
+        this.carapaceHeight = (int) (this.tortue.getItBoxInY() * 0.9);
         
         this.skin = Color.GREEN;
     }
@@ -32,7 +28,7 @@ public class DessinTortue extends JPanel {
         int x = tortue.getX();
         int y = tortue.getY();
 
-        g2D.rotate(0, (double) (x + xBox) / 2, (double) (y + xBox) / 2);
+        g2D.rotate(0, (double) (x + this.tortue.getItBoxInX()) / 2, (double) (y + this.tortue.getItBoxInX()) / 2);
         leftArm(x, y, direction, g2D);
         rightArm(x, y, direction, g2D);
         leftLeg(x, y, direction, g2D);
@@ -53,8 +49,8 @@ public class DessinTortue extends JPanel {
     }
 
     private void tete(int x, int y, int direction, Graphics2D g) {
-        int width = (int) (this.xBox * 0.325);
-        int height = (int) (this.yBox * 0.3);
+        int width = (int) (this.tortue.getItBoxInX() * 0.325);
+        int height = (int) (this.tortue.getItBoxInY() * 0.3);
         int posX = x + this.carapaceHeight;
         int posY = (int) (y + (carapaceHeight - height) * 0.5);
 
@@ -80,7 +76,7 @@ public class DessinTortue extends JPanel {
     }
 
     private void leftMember(int y, Graphics2D g, int width, int height, int posX) {
-        int posY = (int) (y + (yBox - carapaceHeight * 0.7) * 0.5) - height;
+        int posY = (int) (y + (this.tortue.getItBoxInY() - carapaceHeight * 0.7) * 0.5) - height;
         g.setColor(this.skin);
         g.fillOval(posX, posY, width, height);
         g.setColor(Color.BLACK);
@@ -88,7 +84,7 @@ public class DessinTortue extends JPanel {
     }
 
     private void rightMember(int y, Graphics2D g, int width, int height, int posX) {
-        int posY = (int) (y + (yBox + carapaceHeight * 0.45) * 0.5);
+        int posY = (int) (y + (this.tortue.getItBoxInY() + carapaceHeight * 0.45) * 0.5);
         g.setColor(this.skin);
         g.fillOval(posX, posY, width, height);
         g.setColor(Color.BLACK);
@@ -96,31 +92,31 @@ public class DessinTortue extends JPanel {
     }
 
     private void leftArm(int x, int y, int direction, Graphics2D g) {
-        int width = (int) (this.xBox * 0.225);
-        int height = (int) (this.yBox * 0.225);
-        int posX = (int) (x + xBox * 0.7);
+        int width = (int) (this.tortue.getItBoxInX() * 0.225);
+        int height = (int) (this.tortue.getItBoxInY() * 0.225);
+        int posX = (int) (x + this.tortue.getItBoxInX() * 0.7);
         leftMember(y, g, width, height, posX);
     }
 
     private void rightArm(int x, int y, int direction, Graphics2D g) {
-        int width = (int) (this.xBox * 0.225);
-        int height = (int) (this.yBox * 0.225);
-        int posX = (int) (x + xBox * 0.7);
+        int width = (int) (this.tortue.getItBoxInX() * 0.225);
+        int height = (int) (this.tortue.getItBoxInY() * 0.225);
+        int posX = (int) (x + this.tortue.getItBoxInX() * 0.7);
         rightMember(y, g, width, height, posX);
     }
 
     private void leftLeg(int x, int y, int direction, Graphics2D g) {
-        int width = (int) (this.xBox * 0.2);
-        int height = (int) (this.yBox * 0.2);
-        int posX = (int) (x + xBox * 0.05);
+        int width = (int) (this.tortue.getItBoxInX() * 0.2);
+        int height = (int) (this.tortue.getItBoxInY() * 0.2);
+        int posX = (int) (x + this.tortue.getItBoxInX() * 0.05);
         leftMember(y, g, width, height, posX);
     }
 
 
     private void rightLeg(int x, int y, int direction, Graphics2D g) {
-        int width = (int) (this.xBox * 0.2);
-        int height = (int) (this.yBox * 0.2);
-        int posX = (int) (x + xBox * 0.05);
+        int width = (int) (this.tortue.getItBoxInX() * 0.2);
+        int height = (int) (this.tortue.getItBoxInY() * 0.2);
+        int posX = (int) (x + this.tortue.getItBoxInX() * 0.05);
         rightMember(y, g, width, height, posX);
     }
 

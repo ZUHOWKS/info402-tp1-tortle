@@ -25,6 +25,7 @@ public class Tortue {
      * Position de la tortue
      */
     private int x, y;
+    private final int xBox, yBox;
     /**
      * Orientation de la tortue
      */
@@ -82,6 +83,9 @@ public class Tortue {
         this.x = x;
         this.y = y;
         this.direction = dir;
+
+        this.xBox = 200;
+        this.yBox = 175;
     }
 
     /**
@@ -161,7 +165,7 @@ public class Tortue {
     /**
      * Modifie la direction de la tortue.
      *
-     * @param d
+     *
      *            un entier correspondant à une des quatre directions possibles
      *            de la tortue.
      *
@@ -305,5 +309,13 @@ public class Tortue {
      */
     public PropertyChangeListener[] getPropertyChangeListeners(String propertyName) {
         return pcs.getPropertyChangeListeners(propertyName);
+    }
+
+    public int getItBoxInX() {
+        return xBox;
+    }
+
+    public int getItBoxInY() {
+        return yBox;
     }
 }
