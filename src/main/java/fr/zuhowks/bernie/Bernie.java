@@ -1,4 +1,4 @@
-package fr.zuhowks.tortle;
+package fr.zuhowks.bernie;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -10,7 +10,7 @@ import java.beans.PropertyChangeSupport;
  *
  * @author Stéphane Talbot
  */
-public class Tortue {
+public class Bernie {
 
     /**
      * Support de la notification lors des modifications
@@ -53,8 +53,8 @@ public class Tortue {
      * La tortue par défaut est créée à la position de coordonnées (0,0) et est
      * orientée vers le sud (i.e. vers les y positifs).
      */
-    public Tortue() {
-        this(0, 0, Tortue.SUD);
+    public Bernie() {
+        this(0, 0, Bernie.SUD);
     }
 
     /**
@@ -72,12 +72,12 @@ public class Tortue {
      *            entier correspondant à la direction de la tortue (4
      *            orientations possibles).
      *
-     * @see Tortue#NORD
-     * @see Tortue#SUD
-     * @see Tortue#EST
-     * @see Tortue#OUEST
+     * @see Bernie#NORD
+     * @see Bernie#SUD
+     * @see Bernie#EST
+     * @see Bernie#OUEST
      */
-    public Tortue(int x, int y, int dir) {
+    public Bernie(int x, int y, int dir) {
         // L'instance de PropertyChangeSupport va gérer la gestion des notifications
         this.pcs = new PropertyChangeSupport(this);
         this.x = x;
@@ -93,9 +93,9 @@ public class Tortue {
      *
      * La tortue avance de 10 dans la direction où pointe sa tête.
      *
-     * @see Tortue#getDirection()
-     * @see Tortue#getX()
-     * @see Tortue#getY()
+     * @see Bernie#getDirection()
+     * @see Bernie#getX()
+     * @see Bernie#getY()
      *
      */
     public void avancer() {
@@ -109,12 +109,12 @@ public class Tortue {
      * @return un entier correspondant à une des quatre directions possibles de
      *         la tortue.
      *
-     * @see Tortue#NORD
-     * @see Tortue#SUD
-     * @see Tortue#EST
-     * @see Tortue#OUEST
-     * @see Tortue#direction
-     * @see Tortue#setDirection(double)
+     * @see Bernie#NORD
+     * @see Bernie#SUD
+     * @see Bernie#EST
+     * @see Bernie#OUEST
+     * @see Bernie#direction
+     * @see Bernie#setDirection(double)
      */
     public double getDirection() {
         return this.direction;
@@ -128,8 +128,8 @@ public class Tortue {
      *
      * @return un entier correspondant à l'abscisse de la tortue.
      *
-     * @see Tortue#x
-     * @see Tortue#setX(int)
+     * @see Bernie#x
+     * @see Bernie#setX(int)
      */
     public int getX() {
         return this.x;
@@ -143,8 +143,8 @@ public class Tortue {
      *
      * @return un entier correspondant à l'ordonnée de la tortue.
      *
-     * @see Tortue#y
-     * @see Tortue#setY(int)
+     * @see Bernie#y
+     * @see Bernie#setY(int)
      */
     public int getY() {
         return this.y;
@@ -157,12 +157,12 @@ public class Tortue {
      *            un entier correspondant à une des quatre directions possibles
      *            de la tortue.
      *
-     * @see Tortue#NORD
-     * @see Tortue#SUD
-     * @see Tortue#EST
-     * @see Tortue#OUEST
-     * @see Tortue#direction
-     * @see Tortue#getDirection()
+     * @see Bernie#NORD
+     * @see Bernie#SUD
+     * @see Bernie#EST
+     * @see Bernie#OUEST
+     * @see Bernie#direction
+     * @see Bernie#getDirection()
      */
     public void setDirection(double newDir) {
         double oldDir = this.direction;
@@ -181,8 +181,8 @@ public class Tortue {
      *            entier correspondant à la nouvelle valeur de l'abscisse de la
      *            tortue,
      *
-     * @see Tortue#x
-     * @see Tortue#getX()
+     * @see Bernie#x
+     * @see Bernie#getX()
      */
     public void setX(int newX) {
         int oldX = this.x;
@@ -201,8 +201,8 @@ public class Tortue {
      *            entier correspondant à la nouvelle valeur de l'ordonnée de la
      *            tortue,
      *
-     * @see Tortue#y
-     * @see Tortue#getY()
+     * @see Bernie#y
+     * @see Bernie#getY()
      */
     public void setY(int newY) {
         int oldY = this.y;
@@ -214,23 +214,23 @@ public class Tortue {
     /**
      * Fait tourner la tortue d'un quart de tour à droite.
      *
-     * @see Tortue#getDirection()
-     * @see Tortue#tournerGauche()
+     * @see Bernie#getDirection()
+     * @see Bernie#tournerGauche()
      *
      */
     public void tournerDroite() {
         switch ((int) this.getDirection()) {
             case NORD:
-                this.setDirection(Tortue.EST);
+                this.setDirection(Bernie.EST);
                 break;
             case EST:
-                this.setDirection(Tortue.SUD);
+                this.setDirection(Bernie.SUD);
                 break;
             case SUD:
-                this.setDirection(Tortue.OUEST);
+                this.setDirection(Bernie.OUEST);
                 break;
             case OUEST:
-                this.setDirection(Tortue.NORD);
+                this.setDirection(Bernie.NORD);
                 break;
         }
     }
@@ -238,8 +238,8 @@ public class Tortue {
     /**
      * Fait tourner la tortue d'un quart de tour à gauche.
      *
-     * @see Tortue#getDirection()
-     * @see Tortue#tournerDroite()
+     * @see Bernie#getDirection()
+     * @see Bernie#tournerDroite()
      *
      */
     public void tournerGauche() {

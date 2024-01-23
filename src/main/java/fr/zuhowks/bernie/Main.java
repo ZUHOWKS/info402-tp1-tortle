@@ -1,4 +1,4 @@
-package fr.zuhowks.tortle;
+package fr.zuhowks.bernie;
 import javax.swing.JFrame;
 
 public class Main {

@@ -1,4 +1,4 @@
-package fr.zuhowks.tortle;
+package fr.zuhowks.bernie;
 
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
@@ -6,33 +6,33 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JPanel;
 
 
-public class DessinTortue extends JPanel implements PropertyChangeListener {
+public class BernieCanvas extends JPanel implements PropertyChangeListener {
 
-    private final Tortue tortue;
+    private final Bernie bernie;
     private final int carapaceWitdh;
     private final int carapaceHeight;
     private final Color skin;
 
-    public DessinTortue(Tortue tortue) {
-        this.tortue = tortue;
+    public BernieCanvas(Bernie bernie) {
+        this.bernie = bernie;
 
-        this.carapaceWitdh = (int) (this.tortue.getItBoxInX() * 0.9);
-        this.carapaceHeight = (int) (this.tortue.getItBoxInY() * 0.9);
+        this.carapaceWitdh = (int) (this.bernie.getItBoxInX() * 0.9);
+        this.carapaceHeight = (int) (this.bernie.getItBoxInY() * 0.9);
         
         this.skin = Color.GREEN;
 
-        this.tortue.addPropertyChangeListener(this);
+        this.bernie.addPropertyChangeListener(this);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
-        double direction = tortue.getDirection();
-        int x = tortue.getX() + (this.tortue.getItBoxInX() - this.carapaceWitdh)/2;
-        int y = tortue.getY() + (this.tortue.getItBoxInY() - this.carapaceHeight)/2;
+        double direction = bernie.getDirection();
+        int x = bernie.getX() + (this.bernie.getItBoxInX() - this.carapaceWitdh)/2;
+        int y = bernie.getY() + (this.bernie.getItBoxInY() - this.carapaceHeight)/2;
 
-        g2D.rotate(direction, (double) x + this.tortue.getItBoxInX() * 0.5,  y + this.tortue.getItBoxInX() * 0.5);
+        g2D.rotate(direction, (double) x + this.bernie.getItBoxInX() * 0.5,  y + this.bernie.getItBoxInX() * 0.5);
 
         leftArm(x, y, direction, g2D);
         rightArm(x, y, direction, g2D);
@@ -41,7 +41,7 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
         tete(x, y, direction, g2D);
         carapace(x, y, direction, g2D);
         g.setColor(Color.RED);
-        g.drawRect(x - (this.tortue.getItBoxInX() - this.carapaceWitdh)/2, y -( this.tortue.getItBoxInY() - this.carapaceHeight)/2, this.tortue.getItBoxInX(), this.tortue.getItBoxInY());
+        g.drawRect(x - (this.bernie.getItBoxInX() - this.carapaceWitdh)/2, y -( this.bernie.getItBoxInY() - this.carapaceHeight)/2, this.bernie.getItBoxInX(), this.bernie.getItBoxInY());
 
     }
 
@@ -55,8 +55,8 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
     }
 
     private void tete(int x, int y, double direction, Graphics2D g) {
-        int width = (int) (this.tortue.getItBoxInX() * 0.325);
-        int height = (int) (this.tortue.getItBoxInY() * 0.3);
+        int width = (int) (this.bernie.getItBoxInX() * 0.325);
+        int height = (int) (this.bernie.getItBoxInY() * 0.3);
         int posX = x + this.carapaceHeight;
         int posY = (int) (y + (carapaceHeight - height) * 0.5);
 
@@ -82,7 +82,7 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
     }
 
     private void leftMember(int y, Graphics2D g, int width, int height, int posX) {
-        int posY = (int) (y + (this.tortue.getItBoxInY() - carapaceHeight * 0.7) * 0.5) - height;
+        int posY = (int) (y + (this.bernie.getItBoxInY() - carapaceHeight * 0.7) * 0.5) - height;
         g.setColor(this.skin);
         g.fillOval(posX, posY, width, height);
         g.setColor(Color.BLACK);
@@ -90,7 +90,7 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
     }
 
     private void rightMember(int y, Graphics2D g, int width, int height, int posX) {
-        int posY = (int) (y + (this.tortue.getItBoxInY() + carapaceHeight * 0.45) * 0.5);
+        int posY = (int) (y + (this.bernie.getItBoxInY() + carapaceHeight * 0.45) * 0.5);
         g.setColor(this.skin);
         g.fillOval(posX, posY, width, height);
         g.setColor(Color.BLACK);
@@ -98,31 +98,31 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
     }
 
     private void leftArm(int x, int y, double direction, Graphics2D g) {
-        int width = (int) (this.tortue.getItBoxInX() * 0.225);
-        int height = (int) (this.tortue.getItBoxInY() * 0.225);
-        int posX = (int) (x + this.tortue.getItBoxInX() * 0.7);
+        int width = (int) (this.bernie.getItBoxInX() * 0.225);
+        int height = (int) (this.bernie.getItBoxInY() * 0.225);
+        int posX = (int) (x + this.bernie.getItBoxInX() * 0.7);
         leftMember(y, g, width, height, posX);
     }
 
     private void rightArm(int x, int y, double direction, Graphics2D g) {
-        int width = (int) (this.tortue.getItBoxInX() * 0.225);
-        int height = (int) (this.tortue.getItBoxInY() * 0.225);
-        int posX = (int) (x + this.tortue.getItBoxInX() * 0.7);
+        int width = (int) (this.bernie.getItBoxInX() * 0.225);
+        int height = (int) (this.bernie.getItBoxInY() * 0.225);
+        int posX = (int) (x + this.bernie.getItBoxInX() * 0.7);
         rightMember(y, g, width, height, posX);
     }
 
     private void leftLeg(int x, int y, double direction, Graphics2D g) {
-        int width = (int) (this.tortue.getItBoxInX() * 0.2);
-        int height = (int) (this.tortue.getItBoxInY() * 0.2);
-        int posX = (int) (x + this.tortue.getItBoxInX() * 0.05);
+        int width = (int) (this.bernie.getItBoxInX() * 0.2);
+        int height = (int) (this.bernie.getItBoxInY() * 0.2);
+        int posX = (int) (x + this.bernie.getItBoxInX() * 0.05);
         leftMember(y, g, width, height, posX);
     }
 
 
     private void rightLeg(int x, int y, double direction, Graphics2D g) {
-        int width = (int) (this.tortue.getItBoxInX() * 0.2);
-        int height = (int) (this.tortue.getItBoxInY() * 0.2);
-        int posX = (int) (x + this.tortue.getItBoxInX() * 0.05);
+        int width = (int) (this.bernie.getItBoxInX() * 0.2);
+        int height = (int) (this.bernie.getItBoxInY() * 0.2);
+        int posX = (int) (x + this.bernie.getItBoxInX() * 0.05);
         rightMember(y, g, width, height, posX);
     }
 

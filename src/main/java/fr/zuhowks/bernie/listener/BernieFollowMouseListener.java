@@ -1,15 +1,15 @@
-package fr.zuhowks.tortle.listener;
+package fr.zuhowks.bernie.listener;
 
-import fr.zuhowks.tortle.Tortue;
+import fr.zuhowks.bernie.Bernie;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 public class BernieFollowMouseListener implements MouseMotionListener {
 
-    private final Tortue bernie;
+    private final Bernie bernie;
 
-    public BernieFollowMouseListener(Tortue bernie) {
+    public BernieFollowMouseListener(Bernie bernie) {
         this.bernie = bernie;
     }
 
