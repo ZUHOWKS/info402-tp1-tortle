@@ -1,10 +1,12 @@
 package fr.zuhowks.tortle;
 
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import javax.swing.JPanel;
 
 
-public class DessinTortue extends JPanel {
+public class DessinTortue extends JPanel implements PropertyChangeListener {
 
     private final Tortue tortue;
     private final int carapaceWitdh;
@@ -18,6 +20,8 @@ public class DessinTortue extends JPanel {
         this.carapaceHeight = (int) (this.tortue.getItBoxInY() * 0.9);
         
         this.skin = Color.GREEN;
+
+        this.tortue.addPropertyChangeListener(this);
     }
 
     @Override
@@ -121,5 +125,8 @@ public class DessinTortue extends JPanel {
     }
 
 
-
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        this.repaint();
+    }
 }
