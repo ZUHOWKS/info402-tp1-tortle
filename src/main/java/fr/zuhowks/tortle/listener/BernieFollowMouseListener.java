@@ -47,9 +47,6 @@ public class BernieFollowMouseListener implements MouseMotionListener {
             angle+=Math.PI;
         }
 
-
-
         this.bernie.setDirection(angle);
-        System.out.println(angle);
     }
 }

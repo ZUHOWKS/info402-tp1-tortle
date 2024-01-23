@@ -29,8 +29,8 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         double direction = tortue.getDirection();
-        int x = tortue.getX();
-        int y = tortue.getY();
+        int x = tortue.getX() + (this.tortue.getItBoxInX() - this.carapaceWitdh)/2;
+        int y = tortue.getY() + (this.tortue.getItBoxInY() - this.carapaceHeight)/2;
 
         g2D.rotate(direction, (double) x + this.tortue.getItBoxInX() * 0.5,  y + this.tortue.getItBoxInX() * 0.5);
 
@@ -40,6 +40,8 @@ public class DessinTortue extends JPanel implements PropertyChangeListener {
         rightLeg(x, y, direction, g2D);
         tete(x, y, direction, g2D);
         carapace(x, y, direction, g2D);
+        g.setColor(Color.RED);
+        g.drawRect(x - (this.tortue.getItBoxInX() - this.carapaceWitdh)/2, y -( this.tortue.getItBoxInY() - this.carapaceHeight)/2, this.tortue.getItBoxInX(), this.tortue.getItBoxInY());
 
     }
 

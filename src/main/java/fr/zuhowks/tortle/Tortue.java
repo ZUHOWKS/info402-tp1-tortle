@@ -99,20 +99,8 @@ public class Tortue {
      *
      */
     public void avancer() {
-        switch ((int) this.getDirection()) {
-            case NORD:
-                this.setY(this.getY() - 10);
-                break;
-            case EST:
-                this.setX(this.getX() + 10);
-                break;
-            case SUD:
-                this.setY(this.getY() + 10);
-                break;
-            case OUEST:
-                this.setX(this.getX() - 10);
-                break;
-        }
+        this.setX((int) (this.getX() + 10 * Math.cos(this.getDirection())));
+        this.setY((int) (this.getY() + 10 * Math.sin(this.getDirection())));
     }
 
     /**
